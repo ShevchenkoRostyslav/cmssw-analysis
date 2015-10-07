@@ -23,6 +23,7 @@ int main(int argc, char * argv[])
    std::string inputList = "rootFileList.txt";
    Analysis analysis(inputList);
 
+   analysis.addTriggerTree<triggerTree> ("HLT_Double_BJet_bla_bla","MssmHbb/Events/PatTriggers/")
    analysis.addTree<Jet> ("Jets","MssmHbb/Events/slimmedJetsPuppi");
    analysis.addTree<Jet> ("Jets2","MssmHbb/Events/slimmedJets");
    analysis.addTree<Muon>("Muons","MssmHbb/Events/slimmedMuons");
@@ -41,6 +42,7 @@ int main(int argc, char * argv[])
       {
          Jet jet = jets.at(i);
          jet.matchTo(vtxs.vectorCandidates(),"Vertices");
+         //jet.matchTo(vtxs);
       }
 
 //       Collection<Muon> muons = analysis.collection<Muon>("Muons");
